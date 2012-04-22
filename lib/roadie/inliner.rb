@@ -78,7 +78,9 @@ module Roadie
 
       def add_missing_structure
         html_node = document.at_css('html')
-        html_node['xmlns'] ||= 'http://www.w3.org/1999/xhtml'
+        
+        # RTA Don't force namespace (or this will break validation on non-XHTML emails)
+        # html_node['xmlns'] ||= 'http://www.w3.org/1999/xhtml'
 
         if document.at_css('html > head').present?
           head = document.at_css('html > head')
